@@ -27,6 +27,7 @@ children:
   - Molecule.Navigation:
       children:
         - Molecule.Search:
+            events: ["submit"]
 
   - Molecule.Player:
       id: player
@@ -35,9 +36,9 @@ children:
       id: library
       events:
         - scroll
+        - show
       children:
         - Molecule.List:
-            children: []
             id: list
             bind:
               entity: File
@@ -50,7 +51,7 @@ children:
             events:
               - select
             callbacks:
-              - onFile
+              - onFileSelect
 
   - Organism.Section:
       id: playlists
@@ -58,7 +59,6 @@ children:
         - scroll
       children:
         - Molecule.List:
-            children: []
             id: list
 
   - Organism.Section:
@@ -67,8 +67,17 @@ children:
         - scroll
       children:
         - Molecule.List:
-            children: []
             id: list
+            bind:
+              entity: Friend
+              atom: Atom.Li
+              events:
+                - singleTap
+              create : true
+            events:
+              - select
+            callbacks:
+              - onFriendSelect
 
   - Organism.Footer:
       children:

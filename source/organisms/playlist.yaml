@@ -15,38 +15,43 @@ children:
                   icon: down
                   callbacks: ["onBack"]
 
-
   - Organism.Section:
       id: user
       style: align center padding
       children:
         - Atom.Audio:
-            # controls: true
+            id: airphones
             preload: true
-        # - Atom.Figure:
-        #     style: big
-        #     url: http://cdn.tapquo.com/photos/soyjavi.jpg
+            events:
+              - load
+              - error
+              - downloading
+              - play
+              - timing
+              - pause
+              - stop
+              - end]
+
         - Atom.Heading:
             size: h2
             text: Song
         - Atom.Heading:
             size: h4
             text: Artist
-
         - Atom.Image:
             id: cover
             style: cover
             url: "http://2.bp.blogspot.com/-kKxIdYfgMv0/TV97Glu1stI/AAAAAAAABKU/7a8eIhrL0t8/s1600/Bob_Dylan_-_The_Times_They_are_a-Changin.jpg"
-
         - Molecule.Div:
+            id: time
             children:
               - Atom.Label:
                   text: "0:00"
               - Atom.Progress:
+                  id: progress
                   value: 10
               - Atom.Label:
                   text: "3:59"
-
         - Molecule.Navigation:
             children:
               - Atom.Button:

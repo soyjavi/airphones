@@ -1,11 +1,9 @@
 Atoms.$ ->
 
-  Appnima.host.socket = "http://socket.appnima.com:3000"
-
   session = Appnima.User.session()
   if session
-    __.Article.Main.fetchLibrary()
-    Atoms.Url.path "main/library"
+    __.Article.Main.init session
+    # Atoms.Url.path "playlist/user"
   else
     Atoms.Url.path "session/appnima"
 
