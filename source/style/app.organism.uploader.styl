@@ -1,0 +1,18 @@
+[data-extend=uploader]
+
+  [data-atom=progress]
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background-color: transparent !important
+    height: 0px
+    opacity : 0
+
+  &.uploading
+    [data-organism=section], [data-organism=footer], [data-atom=heading]
+      display: none
+
+    [data-atom=progress]
+      height: inherit !important
+      opacity : 1

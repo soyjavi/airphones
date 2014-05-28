@@ -1,0 +1,41 @@
+id: upload
+children:
+ - Organism.Header:
+     id: header
+     children:
+       - Atom.Progress:
+           id: progress
+           value: 0
+       - Atom.Icon:
+           icon: ios7-cloud-upload-outline
+       - Atom.Heading:
+           text: Upload a new track
+
+ - Organism.Section:
+     id: section
+     children:
+       - Atom.Heading:
+           size: h6
+           text: Remember to upload a song to airphones makes you responsible for the authorship of the document.
+       - Molecule.Form:
+           id: form
+           style: hidden
+           children:
+             - Atom.Input:
+                id: file
+                type: file
+                events:
+                  - change
+                callbacks:
+                  - onFileChange
+
+ - Organism.Footer:
+     children:
+       - Molecule.Navigation:
+           children:
+             - Atom.Button:
+                 text: Yes, I understand
+                 callbacks: ["onUpload"]
+             - Atom.Button:
+                 text: Cancel
+                 callbacks: ["onCancel"]
