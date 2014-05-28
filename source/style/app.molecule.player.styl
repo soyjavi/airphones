@@ -1,0 +1,54 @@
+[data-extend=player]
+  HEIGHT = 3.75rem
+
+  z-index: 1980
+  position: absolute
+  bottom: 0
+  height: HEIGHT
+  color: WHITE
+
+  transition all 300ms
+  transform translateY(100%)
+
+  &.active
+    transform translateY(0%)
+
+  > [data-atom=figure]
+    width: HEIGHT
+    height: HEIGHT
+
+  > [data-atom=heading], > [data-atom=label]
+    position: absolute
+    left: HEIGHT + .5rem
+    height: (HEIGHT / 2.5)
+    line-height: (HEIGHT / 2.5)
+  > [data-atom=heading]
+    top: .45rem
+    font-size: FONT_SIZE_SMALL !important
+    font-weight: 300
+  > [data-atom=label]
+    bottom: .45rem
+    font-size: FONT_SIZE_TINY !important
+    font-weight: 100
+    opacity: 0.5
+  > [data-molecule=navigation]
+    float: right
+    position: absolute
+    top: 0
+    right: 0
+    width: WIDTH = HEIGHT * 0.9
+    height: HEIGHT
+    > [data-atom=button]
+      display: inline-block
+      height: HEIGHT
+      width: WIDTH
+      padding: 0
+      font-size: 2rem
+
+  > [data-atom=progress]
+    position: absolute
+    bottom: 0
+    left: HEIGHT
+    right: 0px
+    height: .2rem
+    width: auto

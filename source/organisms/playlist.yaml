@@ -1,0 +1,27 @@
+children:
+  - Organism.Header:
+      children:
+        - Atom.Heading:
+            size: h1
+            text: Playlist
+        - Molecule.Navigation:
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: left
+                  path: back
+            style: left
+  - Molecule.Navigation:
+      children:
+        - Molecule.Search:
+            children: []
+  - Organism.Section:
+      children:
+        - Molecule.List:
+            children: []
+            id: list
+      id: main
+      events:
+        - scroll
+id: playlist

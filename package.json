@@ -1,0 +1,20 @@
+{
+  "name"            : "airphones",
+  "version"         : "1.0.0",
+  "description"     : "Wireless earphones",
+  "author"          : "undefined <undefined>",
+  "homepage"        : "http://tapquo.com",
+  "license"         : {
+    "type": "MIT"
+  },
+  "devDependencies" : {
+    "grunt-contrib-coffee"  : "*",
+    "grunt-contrib-stylus"  : "*",
+    "grunt-contrib-concat"  : "*",
+    "grunt-contrib-uglify"  : "*",
+    "grunt-contrib-watch"   : "*",
+    "grunt-contrib-copy"    : "*",
+    "grunt-notify"          : "*",
+    "grunt-yaml"            : "*"
+  }
+}

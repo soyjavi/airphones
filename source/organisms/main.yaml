@@ -1,0 +1,92 @@
+children:
+  - Organism.Header:
+      children:
+        - Atom.Heading:
+            size: h2
+            text: Airphones
+        - Atom.Heading:
+            size: h3
+            text: Storage
+        - Molecule.Navigation:
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: navicon
+            style: left
+        - Molecule.Navigation:
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: ios7-cloud-upload-outline
+                  callbacks:
+                    - onUploadFile
+            style: right
+
+  - Molecule.Navigation:
+      children:
+        - Molecule.Search:
+
+  - Molecule.Player:
+      id: player
+
+  - Organism.Section:
+      id: library
+      events:
+        - scroll
+      children:
+        - Molecule.List:
+            children: []
+            id: list
+            bind:
+              entity: File
+              atom: Atom.Li
+              events:
+                - singleTap
+              create : true
+              update : true
+              destroy: true
+            events:
+              - select
+            callbacks:
+              - onFile
+
+  - Organism.Section:
+      id: playlists
+      events:
+        - scroll
+      children:
+        - Molecule.List:
+            children: []
+            id: list
+
+  - Organism.Section:
+      id: friends
+      events:
+        - scroll
+      children:
+        - Molecule.List:
+            children: []
+            id: list
+
+  - Organism.Footer:
+      children:
+        - Molecule.Navigation:
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: ios7-box-outline
+                  path: main/library
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: ios7-musical-notes
+                  path: main/playlists
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: people-outline
+                  path: main/friends
+id: main

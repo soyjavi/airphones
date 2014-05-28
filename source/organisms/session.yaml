@@ -1,0 +1,13 @@
+children:
+  - Organism.AppnimaSession:
+      children: []
+      id: appnima
+      events:
+        - login
+        - signup
+        - error
+      callbacks:
+        - onLogin
+        - onSignup
+        - onError
+id: session
