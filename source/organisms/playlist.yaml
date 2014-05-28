@@ -1,27 +1,72 @@
+id: playlist
+style: cover
 children:
   - Organism.Header:
+      id: header
       children:
         - Atom.Heading:
+            id: title
             size: h1
-            text: Playlist
+            text: Playing...
+        - Molecule.Navigation:
+            style: left
+            children:
+              - Atom.Button:
+                  icon: down
+                  callbacks: ["onBack"]
+
+
+  - Organism.Section:
+      id: user
+      style: align center padding
+      children:
+        - Atom.Audio:
+            # controls: true
+            preload: true
+        # - Atom.Figure:
+        #     style: big
+        #     url: http://cdn.tapquo.com/photos/soyjavi.jpg
+        - Atom.Heading:
+            size: h2
+            text: Song
+        - Atom.Heading:
+            size: h4
+            text: Artist
+
+        - Atom.Image:
+            id: cover
+            style: cover
+            url: "http://2.bp.blogspot.com/-kKxIdYfgMv0/TV97Glu1stI/AAAAAAAABKU/7a8eIhrL0t8/s1600/Bob_Dylan_-_The_Times_They_are_a-Changin.jpg"
+
+        - Molecule.Div:
+            children:
+              - Atom.Label:
+                  text: "0:00"
+              - Atom.Progress:
+                  value: 10
+              - Atom.Label:
+                  text: "3:59"
+
         - Molecule.Navigation:
             children:
               - Atom.Button:
-                  events:
-                    - touch
-                  icon: left
-                  path: back
-            style: left
-  - Molecule.Navigation:
-      children:
-        - Molecule.Search:
-            children: []
-  - Organism.Section:
-      children:
-        - Molecule.List:
-            children: []
-            id: list
-      id: main
-      events:
-        - scroll
-id: playlist
+                  icon: heart
+                  disabled: true
+              - Atom.Button:
+                  icon: ios7-skipbackward
+              - Atom.Button:
+                  style: big
+                  icon: pause
+              - Atom.Button:
+                  icon: ios7-skipforward
+              - Atom.Button:
+                  icon: shuffle
+                  disabled: true
+        - Molecule.Form:
+            children:
+              - Atom.Label:
+                  icon: ios7-volume-low
+              - Atom.Input:
+                  type: range
+              - Atom.Label:
+                  icon: ios7-volume-high

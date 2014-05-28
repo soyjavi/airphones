@@ -1,0 +1,58 @@
+[data-extend=playlist]
+  & > section
+    background-color: DARK !important
+    color: WHITE
+
+  [data-organism=section]
+    .cover
+      width: SIZE = 75%
+      margin: 1rem auto 0 auto
+      border-radius: .5rem
+      box-shadow 0 .25rem 2rem rgba(0,0,0,0.5)
+
+    [data-molecule=div], [data-molecule=form]
+      margin: 1rem 0
+      display-box()
+      box-pack(justify)
+      > [data-atom=label]
+        width: 2.5rem
+        font-size: FONT_SIZE_TINY
+        color: lighten(DARK, 20%)
+      > :not([data-atom=label])
+        width: 75%
+        box-flex(1)
+      > *
+        display: block
+
+    [data-molecule=div]
+      > [data-atom=progress]
+        height: .125rem !important
+        margin-top: .5rem
+
+    [data-molecule=navigation]
+      margin-top: 2.5rem
+      box-shadow: none
+      > [data-atom=button]
+        background-color: transparent
+        box-shadow: none !important
+        border: none !important
+        color: WHITE
+        &.big
+          background-color: rgba(0,0,0,0.15)
+          > .icon
+            font-size: 1.5rem
+
+    [data-molecule=form]
+      position: absolute
+      left: 1rem
+      right: 1rem
+      bottom: 0
+      [data-atom=label]
+        > .icon
+          font-size: 1.5rem
+          line-height: 1.5
+      [data-atom=input]
+        height: .15rem
+        &::-webkit-slider-thumb
+          width: FORM_CIRCLE_HEIGHT = 1rem
+          height: FORM_CIRCLE_HEIGHT

@@ -43,14 +43,13 @@
 
 
   input[type=range]
-    background-color: FORM_COLOR
+    background-color: lighten(DARK, 20%)
     border-radius: (BORDER_RADIUS / 2)
     &:active
       background-color: THEME !important
     &::-webkit-slider-thumb
       border-radius: 50%
-      background-color: lighten(FORM_COLOR, 95%)
-      border: 1px solid FORM_COLOR
+      background-color: lighten(DARK, 75%)
 
 
 @media screen and (min-width: 1024px)
