@@ -28,6 +28,9 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
   # Children bubble events
   onSectionShow: (section) ->
     @current_section = section.attributes.id
+    @header.title.el.html @current_section
+    do @search.el[(if @current_section is "settings" then "hide" else "show")]
+
 
   onUploadFile: (event, dispatcher, hierarchy...) ->
     __.Modal.Uploader.show()

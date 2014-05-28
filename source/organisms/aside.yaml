@@ -1,0 +1,26 @@
+id: aside
+children:
+  - Organism.Header:
+  - Organism.Section:
+      style: padding
+      children:
+        - Molecule.Navigation:
+            children:
+              - Atom.Link:
+                  icon: ios7-box-outline
+                  text: My library
+                  path: main/library
+                  events:
+                    - touch
+              - Atom.Link:
+                  icon: people-outline
+                  text: Friends
+                  path: main/friends
+                  events:
+                    - touch
+              - Atom.Link:
+                  icon: people-outline
+                  text: Settings
+                  path: main/settings
+                  events:
+                    - touch

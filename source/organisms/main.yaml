@@ -1,16 +1,17 @@
+id: main
 children:
   - Organism.Header:
+      id: header
       children:
         - Atom.Heading:
-            size: h2
-            text: Airphones
-        - Atom.Heading:
-            size: h3
-            text: Storage
+            id  : title
+            size: h1
+            text: My Library
         - Molecule.Navigation:
             children:
               - Atom.Button:
                   icon: navicon
+                  path: aside
             style: left
         - Molecule.Navigation:
             children:
@@ -70,14 +71,5 @@ children:
             callbacks:
               - onFriendSelect
 
-  - Organism.Footer:
-      children:
-        - Molecule.Navigation:
-            children:
-              - Atom.Button:
-                  icon: ios7-box-outline
-                  path: main/library
-              - Atom.Button:
-                  icon: people-outline
-                  path: main/friends
-id: main
+  - Organism.Section:
+      id: settings
