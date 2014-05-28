@@ -42,23 +42,16 @@ class Atoms.Molecule.Player extends Atoms.Molecule.Navigation
 
   load: (file) ->
     if file.id isnt @file?.id
-      if @file
-        @file.icon = null
-        @file.save()
-      # @file.updateAttributes icon: null if @file
-      @file = file.updateAttributes icon: "http://"
-      file.save()
-      # @figure.url = "http://2.bp.blogspot.com/-kKxIdYfgMv0/TV97Glu1stI/AAAAAAAABKU/7a8eIhrL0t8/s1600/Bob_Dylan_-_The_Times_They_are_a-Changin.jpg"
+      @file = file
+
       @progress.value 0.00
       @audio.src "#{Appnima.host.storage}/stream/#{file.id}"
-      @title.el.html file.name
+      @title.el.html @file.name
       @artist.el.html "Unknown..."
       @options.children[0].attributes.icon = ICON.PAUSE
       @options.children[0].refresh()
     else
       do @__autoHide
-
-    console.log file.updateAttributes name: new Date()
     @el.addClass "active"
 
   hide: ->
@@ -69,29 +62,24 @@ class Atoms.Molecule.Player extends Atoms.Molecule.Navigation
   onAudioLoad: (event) ->
     @progress.value 0.00
     @audio.play()
-    @audio.volume 50.00
-    __.Article.Main.emiter?.send
-      action: "src"
-      src   : "#{Appnima.host.storage}/stream/#{@file.id}"
+    @audio.volume 0.00
+    @__emit "load"
 
   onAudioTiming: (event) ->
     @progress.value (@audio.time() * 100) / @audio.duration()
 
   onAudioPause: (event) ->
     console.log "onAudioPause"
-    __.Article.Main.emiter?.send
-      action: "pause"
-      time  : @audio.time()
+    @__emit "pause", time: @audio.time()
 
   onAudioPlay: (event) ->
     console.log "onAudioPlay"
-    __.Article.Main.emiter?.send
-      action: "play"
-      time  : @audio.time()
+    @__emit "play", time: @audio.time()
 
   onAudioEnd: (event) ->
     console.log "onAudioEnd"
     @bubble "end", event
+    @__emit "end"
 
   onPlay: (event, atom) ->
     if atom.attributes.icon is ICON.PLAY
@@ -108,4 +96,13 @@ class Atoms.Molecule.Player extends Atoms.Molecule.Navigation
 
   # Private
   __autoHide: ->
+    return true
     setTimeout (=> @hide()) , 5000
+
+  __emit: (action, content = {}) ->
+    content.action = action
+    content.file = @file
+    console.log ">", content
+    __.Article.Main.emiter?.send content
+
+

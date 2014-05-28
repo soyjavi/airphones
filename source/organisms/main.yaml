@@ -10,8 +10,6 @@ children:
         - Molecule.Navigation:
             children:
               - Atom.Button:
-                  events:
-                    - touch
                   icon: navicon
             style: left
         - Molecule.Navigation:
@@ -25,6 +23,7 @@ children:
             style: right
 
   - Molecule.Navigation:
+      id : search
       children:
         - Molecule.Search:
             events: ["submit"]
@@ -54,14 +53,6 @@ children:
               - onFileSelect
 
   - Organism.Section:
-      id: playlists
-      events:
-        - scroll
-      children:
-        - Molecule.List:
-            id: list
-
-  - Organism.Section:
       id: friends
       events:
         - scroll
@@ -84,18 +75,9 @@ children:
         - Molecule.Navigation:
             children:
               - Atom.Button:
-                  events:
-                    - touch
                   icon: ios7-box-outline
                   path: main/library
               - Atom.Button:
-                  events:
-                    - touch
-                  icon: ios7-musical-notes
-                  path: main/playlists
-              - Atom.Button:
-                  events:
-                    - touch
                   icon: people-outline
                   path: main/friends
 id: main

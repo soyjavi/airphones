@@ -11,7 +11,6 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
     @emiter = new Appnima.Socket.Emiter @session.id
     @emiter.onConnect (event) =>
       do @fetch
-      __.Modal.Loading.hide()
       Atoms.Url.path "main/library"
     @emiter.onError (event) ->
       console.log "emiter.onError"
@@ -23,6 +22,7 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
     Appnima.Storage.dir("/").then (error, result) ->
       Atoms.Entity.File.destroyAll()
       Atoms.Entity.File.create file for file in result.files or []
+      __.Modal.Loading.hide()
 
 
   # Children bubble events

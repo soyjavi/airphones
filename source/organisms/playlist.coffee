@@ -11,7 +11,7 @@ class Atoms.Organism.Playlist extends Atoms.Organism.Article
   # Instance methods
   connectToUser: (entity) ->
     console.log entity
-    # @header.title.el.html entity.username
+    @header.title.el.html entity.username
     Atoms.Url.path "playlist/user"
 
     @listener = new Appnima.Socket.Listener entity.id
@@ -22,10 +22,10 @@ class Atoms.Organism.Playlist extends Atoms.Organism.Article
     @listener.onError (event) ->
       console.log "@listener.onError", event
     @listener.onMessage (message) =>
-      console.log "@listener.onMessage", message, message.content, message.created_at
       action = message?.content?.action
-      if action is "src"
-        @user.airphones.src message.content.src
+      if action is "load"
+        @file = message.content.file
+        @user.airphones.src "#{Appnima.host.storage}/stream/#{@file.id}"
       if action is "play"
         @user.airphones.play()
         @user.airphones.time message.content.time
@@ -40,17 +40,16 @@ class Atoms.Organism.Playlist extends Atoms.Organism.Article
     Atoms.Url.back()
     false
 
+  onFormChange: (event, form) ->
+    console.log form.value()
+
   onAudioLoad: (event) ->
     console.log "onAudioLoad"
-    # @progress.value 0.00
-    # @user.earphones.play()
-    # @user.earphones.volume 50.00
-    # __.Article.Main.emiter?.send
-    #   action: "src"
-    #   src   : "#{Appnima.host.storage}/stream/#{@file.id}"
+    @user.time.progress.value 0.00
+    @user.airphones.play()
+    @user.airphones.volume 0.00
 
   onAudioTiming: (event) ->
-    console.log @user.time.progress
-    # @user.time.progress.value (@user.earphones.time() * 100) / @user.earphones.duration()
+    @user.time.progress.value (@user.airphones.time() * 100) / @user.airphones.duration()
 
 new Atoms.Organism.Playlist()

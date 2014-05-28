@@ -30,7 +30,7 @@ children:
               - timing
               - pause
               - stop
-              - end]
+              - end
 
         - Atom.Heading:
             size: h2
@@ -49,7 +49,6 @@ children:
                   text: "0:00"
               - Atom.Progress:
                   id: progress
-                  value: 10
               - Atom.Label:
                   text: "3:59"
         - Molecule.Navigation:
@@ -68,10 +67,14 @@ children:
                   icon: shuffle
                   disabled: true
         - Molecule.Form:
+            events:
+              - change
             children:
               - Atom.Label:
                   icon: ios7-volume-low
               - Atom.Input:
                   type: range
+                  events:
+                    - change
               - Atom.Label:
                   icon: ios7-volume-high

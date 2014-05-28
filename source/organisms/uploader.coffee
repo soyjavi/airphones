@@ -29,19 +29,15 @@ class Atoms.Organism.Uploader extends Atoms.Organism.Modal
     if file_url?.type?.match /audio.*/
       callbacks =
         progress: (progress) =>
-          percent = progress.position / progress.total * 100
-          console.error progress, percent
-          console.log @header.progress
-          @header.progress.value percent
-        error: ->
+          @header.progress.value progress.position / progress.total * 100
+        error: =>
           alert "upload error!!"
-        abort: ->
+        abort: =>
           alert "upload aborted"
 
-      console.log file_url
       @el.addClass "uploading"
-      Appnima.Storage.upload(file_url, "/", callbacks).then (error, result) ->
-        console.log "storage/upload", error, result
+      Appnima.Storage.upload(file_url, "/", callbacks).then (error, file) =>
+        Atoms.Entity.File.create file unless error
         @el.removeClass "uploading"
         @hide()
     false
